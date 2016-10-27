@@ -1,23 +1,7 @@
 angular.module('app', ['ngMaterial'])
-    .controller('mainCtrl', ['$scope',function($scope) {
-        $scope.showPrompt = function(ev) {
-            // Appending dialog to document.body to cover sidenav in docs app
-            var confirm = $mdDialog.prompt()
-            .title('What would you name your dog?')
-            .textContent('Bowser is a common name.')
-            .placeholder('Dog name')
-            .ariaLabel('Dog name')
-            .initialValue('Buddy')
-            .targetEvent(ev)
-            .ok('Okay!')
-            .cancel('I\'m a cat person');
-
-            $mdDialog.show(confirm).then(function(result) {
-            $scope.status = 'You decided to name your dog ' + result + '.';
-            }, function() {
-            $scope.status = 'You didn\'t name your dog.';
-            });
-        };
+    .controller('mainCtrl', ['$scope', '$mdDialog',function($scope, $mdDialog) {
+        $scope.CalendarName = "";
+        $scope.showPrompt();
         $scope.currentMonth = {};
         $scope.calendar = [
             { id: 0, name: "January", days: [], }, 
@@ -101,5 +85,30 @@ angular.module('app', ['ngMaterial'])
             $scope.selected_event = {};
             $scope.currentMonth.days[$scope.selected_date].events.push($scope.selected_event);
         }
+        $scope.showPrompt = function() {
+            // Appending dialog to document.body to cover sidenav in docs app
+            var confirm = $mdDialog.prompt()
+            .title('Calendar Name')
+            .placeholder('Name')
+            .ariaLabel('Name')
+            .ok('Submit');
+
+            $mdDialog.show(confirm).then(function(result) {
+                $scope.CalendarName = result;
+				var url = "../getcalendar?q=" + result;
+				$.getJSON(url, function (data) {
+                    $scope.calendar = data;
+				})
+				  .done(function () { console.log('getJSON request succeeded!'); })
+				  .fail(function (jqXHR, textStatus, errorThrown) {
+  					console.log('getJSON request failed! ' + textStatus);
+  					console.log("incoming " + jqXHR.responseText);
+				  })
+				  .always(function () {
+  					console.log('getJSON request ended!');
+				  })
+				  .complete(function () { console.log("complete"); });
+            });
+        };
     }
 ]);

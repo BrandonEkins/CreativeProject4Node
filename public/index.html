@@ -13,6 +13,7 @@
 
 <body ng-app="app" ng-controller="mainCtrl">
     <div class="spacer" style="height:20px"></div>
+    <h1 style="text-align:center; color: white">{{CalendarName}}</h1>
     <div class="mainCard">
         <md-toobar class="md-toolbar-tools toolbar">{{currentMonth.name}} <span flex></span>
             <span ng-hide="compareHide('start')" ng-click="backMonth()" class="arrow"><</span>
