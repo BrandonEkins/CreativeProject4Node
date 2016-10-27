@@ -36,7 +36,7 @@
             <div class="day" ng-class="{gone: day.date === null, today:isToday(day.date)}" ng-repeat="day in currentMonth.days track by $index" ng-click="$parent.selected_date = $index">
                 <div>
                     <span style="margin-left: 3px">{{day.date}} ({{day.events.length}})</span>
-                    <div ng-repeat="event in day.events" style="white-space: nowrap; overflow: hidden; padding-left: 4px">{{event.name}}</div>
+                    <div ng-repeat="event in day.events" style="white-space: nowrap; overflow: hidden; padding-left: 4px">{{event.name}}@{{event.time}}</div>
                 </div>
             </div>
         </div>
@@ -59,7 +59,8 @@
                 <h4>Event:</h4><input type="text" ng-model="selected_event.name" /><br>
                 <h4>Time:</h4><input type="text" ng-model="selected_event.time" /><br>
                 <h4>Location:</h4><input type="text" ng-model="selected_event.location" /><br>
-                <span class="exit" ng-click="selected_event = null">X</span>
+                <span class="exit" ng-click="deleteEvent()">X</span>
+                <md-button class="md-primary" ng-click="selected_event = null">Save</button>
             </div>
         </div>
     </div>
