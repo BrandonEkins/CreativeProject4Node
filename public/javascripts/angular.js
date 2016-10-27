@@ -19,56 +19,19 @@ angular.module('app', ['ngMaterial'])
             });
         };
         $scope.currentMonth = {};
-        $scope.calendar = [{
-                id: 0,
-                name: "January",
-                days: [],
-            }, {
-                id: 1,
-                name: "Febuary",
-                days: [],
-            }, {
-                id: 2,
-                name: "March",
-                days: [],
-            }, {
-                id: 3,
-                name: "April",
-                days: [],
-            }, {
-                id: 4,
-                name: "May",
-                days: [],
-            }, {
-                id: 5,
-                name: "June",
-                days: [],
-            }, {
-                id: 6,
-                name: "July",
-                days: [],
-            }, {
-                id: 7,
-                name: "August",
-                days: [],
-            }, {
-                id: 8,
-                name: "September",
-                days: [],
-            }, {
-                id: 9,
-                name: "October",
-                days: [],
-            }, {
-                id: 10,
-                name: "November",
-                days: [],
-            },
-            {
-                id: 11,
-                name: "December",
-                days: [],
-            },
+        $scope.calendar = [
+            { id: 0, name: "January", days: [], }, 
+            { id: 1, name: "Febuary", days: [], }, 
+            { id: 2, name: "March", days: [], }, 
+            { id: 3, name: "April", days: [], }, 
+            { id: 4, name: "May", days: [], }, 
+            { id: 5, name: "June", days: [], }, 
+            { id: 6, name: "July", days: [], }, 
+            { id: 7, name: "August", days: [], }, 
+            { id: 8, name: "September", days: [], }, 
+            { id: 9, name: "October", days: [], }, 
+            { id: 10, name: "November", days: [], },
+            { id: 11, name: "December", days: [], }
         ]
         $scope.day = {
             date: 0,
