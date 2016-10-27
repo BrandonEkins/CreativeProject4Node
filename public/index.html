@@ -13,9 +13,10 @@
 
 <body ng-app="app" ng-controller="mainCtrl">
     <div class="spacer" style="height:20px"></div>
-    <h1 style="text-align:center; color: white">{{CalendarName}}</h1>
     <div class="mainCard">
+        <h1 style="text-align:center; color: grey">{{CalendarName}}</h1>
         <md-toobar class="md-toolbar-tools toolbar">{{currentMonth.name}} <span flex></span>
+            <md-button class="md-primary" style="background-color:#333333; color: white; font-weight: strong" ng-click="saveCalendar()">Save Calendar</md-button>
             <span ng-hide="compareHide('start')" ng-click="backMonth()" class="arrow"><</span>
             <span ng-hide="!compareHide('start')">&nbsp;</span>&nbsp;
             <span ng-hide="compareHide('end')" class="arrow" ng-click="forwardMonth()">></span>

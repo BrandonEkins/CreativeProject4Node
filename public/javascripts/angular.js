@@ -1,7 +1,6 @@
 angular.module('app', ['ngMaterial'])
     .controller('mainCtrl', ['$scope', '$mdDialog',function($scope, $mdDialog) {
         $scope.CalendarName = "";
-        $scope.showPrompt();
         $scope.currentMonth = {};
         $scope.calendar = [
             { id: 0, name: "January", days: [], }, 
@@ -110,5 +109,9 @@ angular.module('app', ['ngMaterial'])
 				  .complete(function () { console.log("complete"); });
             });
         };
+        $scope.showPrompt();
+        $scope.saveCalendar = function(){
+            
+        }
     }
 ]);
