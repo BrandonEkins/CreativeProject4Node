@@ -86,11 +86,17 @@ angular.module('app', ['ngMaterial'])
             $scope.selected_event = {};
             $scope.currentMonth.days[$scope.selected_date].events.push($scope.selected_event);
         }
+        $scope.deleteEvent = function() {
+            var index = $scope.currentMonth.days[$scope.selected_date].events.indexOf($scope.selected_event);
+            $scope.currentMonth.days[$scope.selected_date].events.splice(index, 1);
+            $scope.selected_event = null;
+        }
         $scope.showPrompt = function() {
             // Appending dialog to document.body to cover sidenav in docs app
             var confirm = $mdDialog.prompt()
                 .title('Calendar Name')
                 .placeholder('Name')
+                .textContent('This Application acts as a directory of calendars. Add events and save the calender and then reload the webpage and type in the same name to access the saved Calendar')
                 .ariaLabel('Name')
                 .ok('Submit');
 
