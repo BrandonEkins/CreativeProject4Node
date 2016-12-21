@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
     res.sendFile('index.html', { root: 'public' });
 });
 
+//Http Requests
 router.post('/savecalendar', function(req, res) {
     console.log('POST /');
     console.log(req.query.q);
